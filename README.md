@@ -35,8 +35,9 @@ Either way, if you're having troubles with it you should revert to the **Prerequ
   - I haven't tested this engine for anything other than **movs** for now, I will be updating this as I test for more formats.
   - The length of the videos **must be the exact same** in order for this to work properly.
   - The dimensions of the videos used must be the exact same.
+  - The layers work exactly as they would in the original image engine, now they're simple movs that are individually animated.
 
-Create your different layers as folder in the 'layers' directory, and add all the layer assets in these directories. You can name the assets anything as long as it has a rarity weight attachd in the file name like so: `example element#70.png`. You can optionally change the delimiter to anything you'd like in the variable `rarityDelimiter`in the `src/config.js` file.
+Create your different layers as folder in the 'layers' directory, and add all the layer assets in these directories. You can name the assets anything as long as it has a rarity weight attachd in the file name like so: `example element#70.mov`. You can optionally change the delimiter to anything you'd like in the variable `rarityDelimiter`in the `src/config.js` file.
 
 Once you have all your layers, go into `src/config.js` and update the `layerConfigurations` objects `layersOrder` array to be your layer folders name in order of the back layer to the front layer.
 
