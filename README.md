@@ -1,5 +1,6 @@
 # Generative Video Engine
-A generative engine, using HashLips Art Engine as a basis, that takes several layers in a video format, combines them and converts into a single mov file).
+A generative engine, using HashLips Art Engine as a basis, that takes several layers in a video format, combines them in a random manner and converts into a single mov file).
+Obvious usage is generating Animated NFT Collections.
 Much of this file is also a direct port from his repository, since many of the explanations are perfectly acceptable :)
 
 **Most of the code reused from:** [HashLips Art Engine](https://github.com/HashLips/hashlips_art_engine)  
