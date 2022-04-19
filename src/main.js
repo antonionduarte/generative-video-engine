@@ -43,7 +43,6 @@ const buildSetup = () => {
   }
   fs.mkdirSync(buildDir);
   fs.mkdirSync(`${buildDir}/json`);
-  fs.mkdirSync(`${buildDir}/images`);
   fs.mkdirSync(`${buildDir}/videos`);
 };
 
@@ -118,7 +117,7 @@ const layersSetup = (layersOrder) => {
 };
 
 
-const addMetadata = (_dna, _edition) => {
+const addMetadata = (_dna, _edition, _attributes) => {
   let dateTime = Date.now();
 
   let tempMetadata = {
@@ -129,8 +128,8 @@ const addMetadata = (_dna, _edition) => {
     edition: _edition,
     date: dateTime,
     ...extraMetadata,
-    attributes: attributesList,
-    compiler: "HashLips Art Engine",
+    attributes: _attributes,
+    compiler: "Generative Video Engine",
   };
 
   if (network == NETWORK.sol) {
@@ -162,7 +161,6 @@ const addMetadata = (_dna, _edition) => {
   metadataList.push(tempMetadata);
   attributesList = [];
 };
-
 
 const addAttributes = (_element) => {
   let selectedElement = _element.layer.selectedElement;
@@ -332,7 +330,9 @@ async function generateVideo(layers, index) {
 	})
 }
 
-
+/**
+ * Main file generator loop.
+*/
 const startCreating = async () => {
   let layerConfigIndex = 0;
   let editionCount = 1;
@@ -364,15 +364,19 @@ const startCreating = async () => {
         let results = constructLayerToDna(newDna, layers);
 
 				await generateVideo(results, editionCount - 1)
-				
-				addMetadata(newDna, abstractedIndexes[0]);
 
+				let metadataTraits = []
+				results.forEach(trait => {
+					let layerTrait = {
+						"trait_type": trait.name,
+						"value": trait.selectedElement.name
+ 					}
+					metadataTraits.push(layerTrait)
+				});
+
+				addMetadata(newDna, abstractedIndexes[0], metadataTraits);
 				saveMetaDataSingleFile(abstractedIndexes[0]);
-				console.log(
-					`Created edition: ${abstractedIndexes[0]}, with DNA: ${sha1(
-						newDna
-					)}`
-				);
+				console.log(`Created edition: ${abstractedIndexes[0]}, with DNA: ${sha1(newDna)}`);
 
         dnaList.add(filterDNAOptions(newDna));
         editionCount++;
@@ -381,9 +385,7 @@ const startCreating = async () => {
         console.log("DNA exists!");
         failedCount++;
         if (failedCount >= uniqueDnaTorrance) {
-          console.log(
-            `You need more layers or elements to grow your edition to ${layerConfigurations[layerConfigIndex].growEditionSizeTo} artworks!`
-          );
+          console.log(`You need more layers or elements to grow your edition to ${layerConfigurations[layerConfigIndex].growEditionSizeTo} artworks!`);
           process.exit();
         }
       }
