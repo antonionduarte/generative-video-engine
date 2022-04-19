@@ -22,6 +22,13 @@ Alternatively you can run this command if you have node installed.
 ```sh
 npm install
 ```
+
+## Ffmpeg (Important)
+
+This program directly calls a version of `ffmpeg` that is installed in your system, and it's using the package `fluent-ffmpeg` from Node.js.
+I tested this on an Arch Based Linux Distro and macOS, `ffmpeg` should be easily installable from any Unix package manager (in my case simply `pacman -S ffmpeg`).
+Either way, if you're having troubles with the usage of `ffmpeg` you should revert to the **Prerequisites** section of the [fluent-ffmpeg package](https://www.npmjs.com/package/fluent-ffmpeg).
+
 # Usage
 
 ## Important Notes (Specific to Video Engine):
