@@ -26,8 +26,8 @@ npm install
 ## Ffmpeg (Important)
 
 This program directly calls a version of `ffmpeg` that is installed in your system, and it's using the package `fluent-ffmpeg` from Node.js.
-I tested this on an Arch Based Linux Distro and macOS, `ffmpeg` should be easily installable from any Unix package manager (in my case simply `pacman -S ffmpeg`).
-Either way, if you're having troubles with the usage of `ffmpeg` you should revert to the **Prerequisites** section of the [fluent-ffmpeg package](https://www.npmjs.com/package/fluent-ffmpeg).
+I tested this on an Arch Based Linux Distro and macOS, `ffmpeg` should be easily installable from the package manager of any Unix based OS (in my case simply `pacman -S ffmpeg`), and the PATH to it should be automatically configured to you, it could be slightly more difficult on Windows.
+Either way, if you're having troubles with it you should revert to the **Prerequisites** section of the [fluent-ffmpeg package](https://www.npmjs.com/package/fluent-ffmpeg).
 
 # Usage
 
