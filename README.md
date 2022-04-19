@@ -22,7 +22,7 @@ npm install
 ```
 # Usage
 
-## Important Notes:
+## Important Notes (Specific to Video Engine):
   - I haven't tested this engine for anything other than **movs** for now, I will be updating this as I test for more formats.
   - The length of the videos **must be the exact same** in order for this to work properly.
   - The dimensions of the videos used must be the exact same.
