@@ -95,3 +95,68 @@ const outputFormat = {
 }
 ```
 
+When you are ready, run the following command and your outputted art will be in the `build/videos` directory and the json in the `build/json` directory:
+
+```sh
+npm run build
+```
+
+or
+
+```sh
+node index.js
+```
+You can also add extra metadata to each metadata file by adding your extra items, (key: value) pairs to the `extraMetadata` object variable in the `config.js` file.
+
+```js
+const extraMetadata = {
+  creator: "Daniel Eugene Botha",
+};
+```
+
+If you don't need extra metadata, simply leave the object empty. It is empty by default.
+
+```js
+const extraMetadata = {};
+```
+
+That's it, you're done.
+
+## Utils
+
+### Updating baseUri for IPFS and description
+
+You might possibly want to update the baseUri and description after you have ran your collection. To update the baseUri and description simply run:
+
+```sh
+npm run update_info
+```
+
+### Printing rarity data (Experimental feature)
+
+To see the percentages of each attribute across your collection, run:
+
+```sh
+npm run rarity
+```
+
+The output will look something like this:
+
+```sh
+Trait type: Top lid
+{
+  trait: 'High',
+  chance: '30',
+  occurrence: '3 in 20 editions (15.00 %)'
+}
+{
+  trait: 'Low',
+  chance: '20',
+  occurrence: '3 in 20 editions (15.00 %)'
+}
+{
+  trait: 'Middle',
+  chance: '50',
+  occurrence: '14 in 20 editions (70.00 %)'
+}
+```
