@@ -1,6 +1,6 @@
 # Layers 
 
-In this folder, place the Layers in their own separate folders, and the variations for each specific layers inside those folders. 
+In this folder, create a folder for each layer, and the variations for each specific layers inside those folders. 
 
 If I had a collection of a character that had a Hat, Shoes, a Body and a Background, I would have a folder for each of those traits. 
 
