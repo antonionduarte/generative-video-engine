@@ -1,7 +1,7 @@
 const basePath = process.cwd();
-const { NETWORK } = require(`${basePath}/constants/network.js`);
 const fs = require("fs");
 const sha1 = require(`${basePath}/node_modules/sha1`);
+const { NETWORK } = require(`${basePath}/constants/network.js`);
 
 
 const buildDir = `${basePath}/build`;
@@ -305,18 +305,14 @@ async function generateVideo(layers, index) {
 		layers.forEach(layer => {
 			video.addInput(`${layer.selectedElement.path}`)
 		});
-
+		
+		// TODO: Verify if this works but I think it probably does and it's a lot simpler
+		// than the old dumb logic.
 		let filter = []
-		let appendedFirst = false;
-
-		for (let i = 0; i < layers.length - 1; i++) {
-			if (!appendedFirst)
-				filter.push(`[${i}:v][${i+1}:v]overlay=shortest=1[overlay:${i+1}]`)
-			else
-				filter.push(`[overlay:${i}][${i+1}:v]overlay=shortest=1[overlay:${i+1}]`)
-			if (appendedFirst == false) appendedFirst = true;
+		filter.push(`[${i}:v][${i+1}:v]overlay=shortest=1[overlay:${i+1}]`)
+		for (let i = 1; i < layers.length - 1; i++) {
+			filter.push(`[overlay:${i}][${i+1}:v]overlay=shortest=1[overlay:${i+1}]`)
 		}
-
 		video.complexFilter(filter)
 
 		video.outputOptions([
@@ -325,8 +321,7 @@ async function generateVideo(layers, index) {
 
 		video.output(`${buildDir}/videos/${index}.mov`)
 		video.run()
-		video.on('end', () => { return resolve() })
-	
+		video.on('end', () => { return resolve() })	
 	})
 }
 
