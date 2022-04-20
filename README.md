@@ -1,5 +1,6 @@
 # Generative Video Engine
-A generative engine, using HashLips Art Engine as a basis, that takes several layers in a video format, combines them and converts into a single mov file).
+A generative engine, using HashLips Art Engine as a basis, that takes several layers in a video format, combines them in a random manner and converts into a single mov file).
+Obvious usage is generating Animated NFT Collections.
 Much of this file is also a direct port from his repository, since many of the explanations are perfectly acceptable :)
 
 **Most of the code reused from:** [HashLips Art Engine](https://github.com/HashLips/hashlips_art_engine)  
@@ -11,25 +12,27 @@ If you are cloning the project then run this first, otherwise you can download t
 git clone https://github.com/HashLips/hashlips_art_engine.git
 ```
 
-Go to the root of your folder and run this command if you have yarn installed.
-
-```sh
-yarn install
-```
-
 Alternatively you can run this command if you have node installed.
 
 ```sh
 npm install
 ```
+
+## Ffmpeg (Important)
+
+This program directly calls a version of `ffmpeg` that is installed in your system, and it's using the package `fluent-ffmpeg` from Node.js.
+I tested this on an Arch Based Linux Distro and macOS, `ffmpeg` should be easily installable from the package manager of any Unix based OS (in my case simply `pacman -S ffmpeg`), and the PATH to it should be automatically configured to you, it could be slightly more difficult on Windows.
+Either way, if you're having troubles with it you should revert to the **Prerequisites** section of the [fluent-ffmpeg package](https://www.npmjs.com/package/fluent-ffmpeg).
+
 # Usage
 
 ## Important Notes (Specific to Video Engine):
   - I haven't tested this engine for anything other than **movs** for now, I will be updating this as I test for more formats.
   - The length of the videos **must be the exact same** in order for this to work properly.
   - The dimensions of the videos used must be the exact same.
+  - The layers work exactly as they would in the original image engine, now they're simple movs that are individually animated.
 
-Create your different layers as folder in the 'layers' directory, and add all the layer assets in these directories. You can name the assets anything as long as it has a rarity weight attachd in the file name like so: `example element#70.png`. You can optionally change the delimiter to anything you'd like in the variable `rarityDelimiter`in the `src/config.js` file.
+Create your different layers as folder in the 'layers' directory, and add all the layer assets in these directories. You can name the assets anything as long as it has a rarity weight attachd in the file name like so: `example element#70.mov`. You can optionally change the delimiter to anything you'd like in the variable `rarityDelimiter`in the `src/config.js` file.
 
 Once you have all your layers, go into `src/config.js` and update the `layerConfigurations` objects `layersOrder` array to be your layer folders name in order of the back layer to the front layer.
 
