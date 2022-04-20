@@ -13,7 +13,7 @@ var ffmpeg = require('fluent-ffmpeg')
 
 
 const {
-  format,
+	outputFormat,
   baseUri,
   description,
   uniqueDnaTorrance,
@@ -123,7 +123,7 @@ const addMetadata = (_dna, _edition, _attributes) => {
   let tempMetadata = {
     name: `${namePrefix} #${_edition}`,
     description: description,
-    image: `${baseUri}/${_edition}.gif`,
+    image: `${baseUri}/${_edition}.${outputFormat.format}`,
     dna: sha1(_dna),
     edition: _edition,
     date: dateTime,
@@ -149,11 +149,11 @@ const addMetadata = (_dna, _edition, _attributes) => {
       properties: {
         files: [
           {
-            uri: `${_edition}.gif`,
-            type: "image/gif",
+            uri: `${_edition}.${outputFormat.format}`,
+            type: "${outputFormat.formatType}",
           },
         ],
-        category: "image",
+        category: "${outputFormat.category}",
         creators: solanaMetadata.creators,
       },
     };
