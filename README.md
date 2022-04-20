@@ -132,6 +132,8 @@ That's it, you're done.
 
 ### Convert the entire collection from movs to gifs
 
+**Important**: This util also requires `ffmpeg`, so please be sure to take a look at the section of this README regarding `ffmpeg`.
+
 To run this, please first configure the part of the configuration `src/config.js` that is specific to this feature, in `numberFrames` you should input the number of frames of your animation (ask your artist), and in dimensions you should input the width:
 
 ```js
