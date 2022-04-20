@@ -31,6 +31,7 @@ Either way, if you're having troubles with it you should revert to the **Prerequ
   - The length of the videos **must be the exact same** in order for this to work properly.
   - The dimensions of the videos used must be the exact same.
   - The layers work exactly as they would in the original image engine, now they're simple movs that are individually animated.
+  - I built a new util `convert_to_gif.js` that automatically converts the entire mov collection to gifs, and places them in the `build/gifs` folder, please take a look at how to use it below. 
 
 Create your different layers as folder in the 'layers' directory, and add all the layer assets in these directories. You can name the assets anything as long as it has a rarity weight attachd in the file name like so: `example element#70.mov`. You can optionally change the delimiter to anything you'd like in the variable `rarityDelimiter`in the `src/config.js` file.
 
@@ -128,6 +129,25 @@ const extraMetadata = {};
 That's it, you're done.
 
 ## Utils
+
+### Convert the entire collection from movs to gifs
+
+To run this, please first configure the part of the configuration `src/config.js` that is specific to this feature, in `numberFrames` you should input the number of frames of your animation (ask your artist), and in dimensions you should input the width:
+
+```js
+const gifConversion = {
+	numberFrames: 34,
+	dimensions: 1080
+}
+```
+
+Then you just need to run:
+
+```sh
+npm run convert_gif
+```
+
+It might take a bit to run, but in the end, your gifs will appear in `build/gifs`.
 
 ### Updating baseUri for IPFS and description
 
