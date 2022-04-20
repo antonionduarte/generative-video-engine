@@ -3,6 +3,11 @@ A generative engine, using HashLips Art Engine as a basis, that takes several la
 Obvious usage is generating Animated NFT Collections.
 Much of this file is also a direct port from his repository, since many of the explanations are perfectly acceptable :)
 
+What this engine provides that HashLip's doesn't:
+ - An engine to combine video layers in a random manner in order to obtain a configured amount of new video files.
+ - Provides Metadata files complying to the [ERC721A official metadata standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md).
+ - Provides a util to convert all the resulting video files (which are in the `.mov` format), to `.gif`, since it's a more desirable standard for an NFT collection.
+
 **Most of the code reused from:** [HashLips Art Engine](https://github.com/HashLips/hashlips_art_engine)  
 
 # Installation
