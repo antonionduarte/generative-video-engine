@@ -306,10 +306,8 @@ async function generateVideo(layers, index) {
 			video.addInput(`${layer.selectedElement.path}`)
 		});
 		
-		// TODO: Verify if this works but I think it probably does and it's a lot simpler
-		// than the old dumb logic.
 		let filter = []
-		filter.push(`[${i}:v][${i+1}:v]overlay=shortest=1[overlay:${i+1}]`)
+		filter.push(`[${0}:v][${0+1}:v]overlay=shortest=1[overlay:${0+1}]`)
 		for (let i = 1; i < layers.length - 1; i++) {
 			filter.push(`[overlay:${i}][${i+1}:v]overlay=shortest=1[overlay:${i+1}]`)
 		}

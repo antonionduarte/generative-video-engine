@@ -25,12 +25,13 @@ const layerConfigurations = [
 	{
     growEditionSizeTo: 100,
     layersOrder: [
+      { name: "Background" },
       { name: "Shadow" },
+      { name: "Back Arm" },
       { name: "Shoes" },
-      { name: "BackArm" },
       { name: "Body" },
-      { name: "BagsCurrencies" },
-      { name: "FrontArm" },
+      { name: "Bags Currencies" },
+      { name: "Front Arm" },
     ],
 	}
 ];
@@ -48,6 +49,15 @@ const outputFormat = {
 	format: ".gif",
 	formatType: "image/gif",
 	category: "image"
+}
+
+// Very important, when converting to gif using the Util 
+// convert_to_gif.js 
+// Input the necessary dimensions, such as number of frames 
+// And the target width of the gif.
+const gifConversion = {
+	numberFrames: 34,
+	dimensions: 1080
 }
 
 const shuffleLayerConfigurations = false;
@@ -73,4 +83,5 @@ module.exports = {
   namePrefix,
   network,
   solanaMetadata,
+	gifConversion
 };
