@@ -12,6 +12,7 @@
     ]
   },
   "scripts": {
+		"rarity": "node utils/rarity.js",
     "build": "node index.js",
     "generate": "node index.js",
     "update_info": "node utils/update_info.js",
