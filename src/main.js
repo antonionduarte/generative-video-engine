@@ -356,7 +356,7 @@ const startCreating = async () => {
       if (isDnaUnique(dnaList, newDna)) {
         let results = constructLayerToDna(newDna, layers);
 
-				await generateVideo(results, editionCount - 1)
+				await generateVideo(results, abstractedIndexes[0])
 
 				let metadataTraits = []
 				results.forEach(trait => {
